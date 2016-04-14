@@ -9,7 +9,7 @@
   (vec (repeat n -1)))
 
 (defn attack?
-  "Returns true if it's possible from the first position [r1 c1] to attack
+  "Returns true if it's possible from the first position [r1 c1] to atack
   the queen in the second position [r2 c2], otherwise returns false."
   [[r1 c1] [r2 c2]]
   (or
@@ -45,7 +45,9 @@
   (let [safe-boards (generate-next-safe-boards board col)]
     (if (= col (dec (count board)))
         safe-boards
-        (mapcat #(find-boards % (inc col)) safe-boards))))
+        (reduce concat
+          ((if (zero? col) pmap map) #(find-boards % (inc col))
+            safe-boards)))))
 
 (defn queens
   "Returns a list with all the solutions for the N-Queens problem."
