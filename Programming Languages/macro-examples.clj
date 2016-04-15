@@ -40,7 +40,9 @@
   [condition & all]
   (let [then-part (keep-between :THEN :ELSE all)
         else-part (keep-between :ELSE :THEN all)]
-    `(if ~condition (do ~@then-part) (do ~@else-part))))
+    `(if ~condition
+       (do ~@then-part)
+       (do ~@else-part))))
 
 (println (inc (debug (* 4 5))))
 (println (IF (> 3 1) :THEN 'ok :ELSE 'oops))
