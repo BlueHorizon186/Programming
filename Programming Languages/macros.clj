@@ -22,6 +22,18 @@
 
 ; ==========================================================
 
+(defn parse-conditional
+  "Given a loop expressions, returns the conditional keyword that
+  denotes the loop's behaviour."
+  [lst]
+  (let [exprs (take-while
+                #(and (not= :while (first %)) (not= :until (first %)))
+                lst)
+        final (flatten (drop-while
+                #(and (not= :while (first %)) (not= :until (first %)))
+                lst))]
+    (list exprs (first final) (rest final))))
+
 (defmacro do-loop
   "Implements a post-test loop control statement. Receives one
   or more expressions as arguments and a final conditional form
@@ -32,7 +44,21 @@
   other hand, if the final form uses an :until keyword, the body
   of the loop is repeated while the condition holds false.
   Returns nil."
-  [& exprs] nil)
+  [& l-exprs]
+  (let [loop-comp (parse-conditional l-exprs)
+        exprs (first loop-comp)
+        cond-key (second loop-comp)
+        cond-expr (last loop-comp)]
+    `(loop [c# ~cond-expr]
+       (println c#)
+       (cond
+         (= :until ~cond-key)
+           (if c# nil
+             (do ~@exprs (recur ~cond-expr)))
+         (= :while ~cond-key)
+           (if c# (do ~@exprs (recur ~cond-expr))
+             nil)))))
+
 
 ; ==========================================================
 
@@ -65,4 +91,10 @@
   (is (= nil (my-or false false nil)))
   (is (= false (my-or nil nil false))))
 
-(run-tests)
+; (run-tests)
+
+(def i (atom 0))
+(do-loop
+  (println @i)
+  (swap! i inc)
+  (:until (= @i 5)))
