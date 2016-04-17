@@ -1,0 +1,21 @@
+Note: The book titled "Design Patterns in Ruby" was essential in the development of this project.
+
+General Ideas:
+- http://ruby.about.com/od/textadventure/ss/One-Tree-To-Rule-Them-All.htm
+- http://tutorials.codebar.io/ruby/lesson5/tutorial.html
+
+Patterns Used So Far:
+- DSL: Sinatra is a DSL xD
+- Template: There will be an abstract class upon which all the rooms will be based on. Perhaps the Enemies too.
+- Singleton: The map of the game never changes, and the players' states are managed by their respective game and object instances.
+- Factory: Since each game instance can either create a new Player object from scratch, or one from retrieved info from the Database, a Factory can better define how the game instances are created.
+
+- Singleton: "Game Programming Patterns" by Robert Nystrom
+
+Additional Installations:
+- RubyTree: sudo gem install rubytree
+- RubyTree Documentation: http://rubytree.anupamsg.me/rdoc/Tree/TreeNode.html
+
+Other Stuff:
+- Is thinking outside the box actually real, or just another paradox?
+http://lateralaction.com/articles/thinking-outside-the-box/
