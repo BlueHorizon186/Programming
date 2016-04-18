@@ -34,7 +34,7 @@ class Player
   #              initialised with the default starting value.
   #   wealth:: The player's wealth. Its value is either the
   #            stored one in the database, or the default one.
-  def initialize(name, strength, wealth)
+  def initialize(name, strength = 50, wealth = 50)
     @name = name
     @strength = strength
     @wealth = wealth
