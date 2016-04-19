@@ -1,11 +1,9 @@
-create database WerewolvesAndWanderer;
 
-CREATE TABLE `WerewolvesAndWanderer`.`players` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(30) NOT NULL,
-  `password` VARCHAR(30) NOT NULL,
-  `strength` INT NULL,
-  `wealth` INT NULL,
-  `monster_tally` INT NULL,
-  `current_room` INT NULL,
-  PRIMARY KEY (`id`));
+CREATE TABLE IF NOT EXISTS `Players`(
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `name` TEXT NOT NULL,
+  `password` TEXT NOT NULL,
+  `strength` INTEGER NOT NULL DEFAULT 50,
+  `wealth` INTEGER NOT NULL DEFAULT 50,
+  `monster_tally` INTEGER NOT NULL DEFAULT 0,
+  `current_room` INTEGER NULL);

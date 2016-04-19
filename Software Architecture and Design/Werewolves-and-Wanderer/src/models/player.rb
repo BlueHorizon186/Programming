@@ -34,11 +34,13 @@ class Player
   #              initialised with the default starting value.
   #   wealth:: The player's wealth. Its value is either the
   #            stored one in the database, or the default one.
-  def initialize(name, strength = 50, wealth = 50)
+  #   monsters:: The number of monsters the player has defeated
+  #              so far.
+  def initialize(name, strength = 50, wealth = 50, monsters = 0)
     @name = name
     @strength = strength
     @wealth = wealth
-    @monsters = 0
+    @monster_tally = monsters
     @curr_room = nil
   end
 

@@ -11,6 +11,9 @@ Patterns Used So Far:
 - Factory: Since each game instance can either create a new Player object from scratch, or one from retrieved info from the Database, a Factory can better define how the game instances are created.
 
 - Singleton: "Game Programming Patterns" by Robert Nystrom
+- Basic SQLite: http://www.tutorialspoint.com/sqlite/sqlite_create_table.htm
+- SQLite Types: http://www.tutorialspoint.com/sqlite/sqlite_data_types.htm
+- SQL Default Values: http://www.w3schools.com/sql/sql_default.asp
 
 Additional Installations:
 - RubyTree: sudo gem install rubytree

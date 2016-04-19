@@ -12,9 +12,9 @@ enable :sessions
 set :session_secret, 'SecretString#!$%'
 
 get '/' do
-  redirect '/adventuregame'
+  redirect '/adventurelogin'
 end
 
-get '/adventuregame' do
+get '/adventurelogin' do
   erb :index
 end
