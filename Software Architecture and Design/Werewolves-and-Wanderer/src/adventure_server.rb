@@ -5,6 +5,7 @@
 # File: adventure_server.rb
 
 require 'sinatra'
+require 'models/core/game_instance_factory.rb'
 
 set :bind, '0.0.0.0'
 set :port, ENV['PORT']
@@ -12,9 +13,21 @@ enable :sessions
 set :session_secret, 'SecretString#!$%'
 
 get '/' do
-  redirect '/adventurelogin'
+  redirect '/adventuresignup'
 end
 
-get '/adventurelogin' do
+get '/adventuresignup' do
   erb :index
+end
+
+post '/adventuresignup' do
+  session[:user] = params[:user]
+  session[:password] = params[:password]
+  redirect '/signupsuccess'
+end
+
+get '/signupsuccess' do
+  @game_instance = GameInstanceFactory.new_game(session[:user], \
+                                                session[:password])
+  erb :new_user_success
 end

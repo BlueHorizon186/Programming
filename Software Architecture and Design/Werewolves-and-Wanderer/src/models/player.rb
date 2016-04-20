@@ -13,7 +13,7 @@ class Player
 
   # The player's strength: It represents his/her energy.
   # When it's depleted, it's game over.
-  attr_accessor :strength,
+  attr_accessor :strength
 
   # Number of dollars the player has.
   attr_accessor :wealth
@@ -36,12 +36,13 @@ class Player
   #            stored one in the database, or the default one.
   #   monsters:: The number of monsters the player has defeated
   #              so far.
-  def initialize(name, strength = 50, wealth = 50, monsters = 0)
+  #   room:: The room the player is in. Defaults to nil.
+  def initialize(name, strength = 50, wealth = 50, monsters = 0, room = nil)
     @name = name
     @strength = strength
     @wealth = wealth
     @monster_tally = monsters
-    @curr_room = nil
+    @curr_room = room
   end
 
 end

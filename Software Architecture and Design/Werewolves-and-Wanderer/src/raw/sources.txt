@@ -7,7 +7,7 @@ General Ideas:
 Patterns Used So Far:
 - DSL: Sinatra is a DSL xD
 - Template: There will be an abstract class upon which all the rooms will be based on. Perhaps the Enemies too.
-- Singleton: The map of the game never changes, and the players' states are managed by their respective game and object instances.
+- Singleton: The Database Manager is implemented as a Singleton because there is no need to create a new instance every time a player logs in or signs up. One can handle all the required petitions.
 - Factory: Since each game instance can either create a new Player object from scratch, or one from retrieved info from the Database, a Factory can better define how the game instances are created.
 
 - Singleton: "Game Programming Patterns" by Robert Nystrom

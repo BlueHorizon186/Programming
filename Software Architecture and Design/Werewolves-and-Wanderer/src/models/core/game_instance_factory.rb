@@ -4,8 +4,9 @@
 
 # File: models/core/game_instance_factory.rb
 
-require '../player'
-require 'game_instance'
+require_relative '../player'
+require_relative './game_instance'
+require_relative './db_manager'
 
 # The +GameInstanceFactory+ is an implementation of the {Simple
 # Factory Pattern}[https://en.wikipedia.org/wiki/Factory_method_pattern].
@@ -15,30 +16,27 @@ require 'game_instance'
 class GameInstanceFactory
 
   @@player = nil
+  @@db = DBManager.instance
 
-  # Get the input player's record from the database, if any.
+  # Stores the newly registered player to the database and grants
+  # him/her access to the game.
   #
   # Parameters::
-  #   user:: The player's name
-  #   password:: The player's password
+  #   username:: The player's username
+  #   password:: The player's account password
   #
-  # Returns:: An array with the player's data if it exists,
-  #           or *nil* otherwise.
-  def self.load_game(user, password)
-    nil
+  # Returns:: A new +GameInstance+ for the player to begin
+  #           the game.
+  def self.new_game(username, password)
+    status = @@db.insert(username, password)
+    @@player = Player.new(username)
+    return status, self.new_instance
   end
 
-  # Creates a new +GameInstance+ with the retrieved player's
-  # progress or a completely clean start of the game if none
-  # was found.
-  #
-  # Returns:: The generated +GameInstance+ object.
+  def self.load_game(user, password)
+  end
+
   def self.new_instance
-    if self.load_game("user", "password")
-      @@player = Player.new("Read the values from the Database")
-    else
-      @@player = Player.new("Player")
-    end
     GameInstance.new(@@player)
   end
 
