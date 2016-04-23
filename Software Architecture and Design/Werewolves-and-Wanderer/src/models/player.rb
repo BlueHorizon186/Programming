@@ -1,8 +1,8 @@
 # Final Project: A Text Adventure Game
-# Date: 14-Apr-2016
+# Date: 05-May-2016
 # Author: A01371166 Ivan David Diaz Sanchez
 
-# File: player.rb
+# File: models/player.rb
 
 # The +Player+ class represents an object that contains
 # all the basic information of a registered player. It

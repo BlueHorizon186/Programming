@@ -1,5 +1,5 @@
 # Final Project: A Text Adventure Game
-# Date: 14-Apr-2016
+# Date: 05-May-2016
 # Author: A01371166 Ivan David Diaz Sanchez
 
 # File: adventure_server.rb
