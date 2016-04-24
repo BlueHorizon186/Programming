@@ -5,6 +5,7 @@
 # File: adventure_server.rb
 
 require 'sinatra'
+require 'models/game_instance_factory'
 
 set :bind, '0.0.0.0'
 set :port, ENV['PORT']
@@ -17,4 +18,15 @@ end
 
 get '/welcome' do
   erb :index
+end
+
+post '/welcome' do
+  session[:user] = params[:usrtxt]
+  session[:password] = params[:usrpswd]
+  redirect '/signupsuccess'
+end
+
+get '/signupsuccess' do
+  @message = GameInstanceFactory.load_game(session[:user], session[:password])
+  erb :signup_success
 end

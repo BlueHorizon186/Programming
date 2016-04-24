@@ -25,4 +25,12 @@ class GameInstance
     @player = player
   end
 
+  # Get a string containing the representation for this
+  # game instance. Used for debugging purposes.
+  #
+  # Returns:: This game instance's attributes as a string.
+  def to_s
+    "Instance's Player: #{@player.to_s}\n"
+  end
+
 end

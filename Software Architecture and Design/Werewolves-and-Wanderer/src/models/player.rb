@@ -26,6 +26,8 @@ class Player
 
   # Creates a new +Player+ instance with the provided values,
   # or the default ones, should it be a newly registered player.
+  # The constructor arguments are passed in a hash with the
+  # followingly described keys.
   #
   # Parameters::
   #   name:: The player's username.
@@ -33,12 +35,22 @@ class Player
   #   wealth:: The player's current _wealth_. Starting is 50.
   #   monsters:: The total amount of defeated enemies in this run.
   #   room:: The room the player is currently in.
-  def initialize(name, strength = 50, wealth = 50, enemies = 0, room = nil)
-    @name = name
-    @strength = strength
-    @wealth = wealth
-    @monster_tally = enemies
-    @curr_room = room
+  def initialize(options={:name=>"P", :strength=>50, :wealth=>50, \
+                          :monster_tally=>0, :current_room=>nil})
+    @name = options[:name]
+    @strength = options[:strength]
+    @wealth = options[:wealth]
+    @monster_tally = options[:monster_tally]
+    @curr_room = options[:current_room]
+  end
+
+  # Get a string containing the representation for this
+  # player object.
+  #
+  # Returns:: This player's attributes as a string.
+  def to_s
+    "Name: #{@name} -> Strength: #{@strength} -> Wealth: #{@wealth} \
+    -> Monsters: #{@monster_tally} -> Current Room: #{@curr_room}\n"
   end
 
 end

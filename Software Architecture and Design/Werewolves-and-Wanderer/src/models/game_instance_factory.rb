@@ -15,7 +15,8 @@ require_relative './database_manager'
 # class method.
 class GameInstanceFactory
 
-  @@user, @@password = nil, nil
+  @@player = nil
+  @@db = DatabaseManager.instance
 
   # Creates a new fresh game and registers the new player in
   # the database. The +DatabaseManager+ is called for this
@@ -28,7 +29,9 @@ class GameInstanceFactory
   # Returns:: An array with the database operation result
   #           message and the fresh +GameInstance+ object.
   def self.new_game(user, password)
-    @@user, @@password = user, password
+    db_status = @@db.insert(user, password)
+    @@player = Player.new(user)
+    [db_status, self.new_instance]
   end
 
   # Creates a new +GameInstance+ with the player's information
@@ -43,7 +46,9 @@ class GameInstanceFactory
   #           message and the generated +GameInstance+ object
   #           with the player's previously saved progress.
   def self.load_game(user, password)
-    @@user, @@password = user, password
+    saved_game = @@db.retrieve(user, password)
+    @@player = Player.new(saved_game[1])
+    [saved_game[0], self.new_instance]
   end
 
   # Creates the new +GameInstance+ object. It is called by
@@ -51,6 +56,7 @@ class GameInstanceFactory
   #
   # Returns:: The +GameInstance+ object.
   def self.new_instance
+    GameInstance.new(@@player)
   end
 
 end
