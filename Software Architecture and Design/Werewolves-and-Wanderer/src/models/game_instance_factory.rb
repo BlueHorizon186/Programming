@@ -47,8 +47,14 @@ class GameInstanceFactory
   #           with the player's previously saved progress.
   def self.load_game(user, password)
     saved_game = @@db.retrieve(user, password)
-    @@player = Player.new(saved_game[1])
-    [saved_game[0], self.new_instance]
+
+    unless saved_game.nil?
+      @@player = Player.new(saved_game[1])
+      return [saved_game[0], self.new_instance]
+    end
+
+    ['The game could not be loaded because the entered player
+    credentials were not found.']
   end
 
   # Creates the new +GameInstance+ object. It is called by

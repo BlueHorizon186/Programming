@@ -28,5 +28,6 @@ end
 
 get '/signupsuccess' do
   @message = GameInstanceFactory.load_game(session[:user], session[:password])
+  if @message[1].nil? then @message = ['NULL', @message[0]] end
   erb :signup_success
 end

@@ -50,10 +50,12 @@ class DatabaseManager
       players = DB.from(:Players)
       requested_pl = players[:name => usr, :password => pswd]
 
+      if requested_pl.nil? then return nil end
+
       requested_pl.delete(:id)
       requested_pl.delete(:password)
     rescue Sequel::Error => e
-      return e.message
+      return [e.message, nil]
     end
 
     ['Game loaded successfully!', requested_pl]
