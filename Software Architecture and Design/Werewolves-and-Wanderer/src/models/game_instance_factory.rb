@@ -44,7 +44,9 @@ class GameInstanceFactory
   #
   # Returns:: An array with the database operation result
   #           message and the generated +GameInstance+ object
-  #           with the player's previously saved progress.
+  #           with the player's previously saved progress or
+  #           an error message if the player's information
+  #           could not be found.
   def self.load_game(user, password)
     saved_game = @@db.retrieve(user, password)
 

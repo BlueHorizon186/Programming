@@ -20,7 +20,7 @@ class DatabaseManager
 
   # Inserts a new player's information to the database.
   #
-  # Parameters::
+  # Parameter::
   #   user_data:: An array with the player's username
   #               and password.
   #
@@ -40,7 +40,19 @@ class DatabaseManager
     'Your player account has been successfully created!'
   end
 
-  # Implementation pending...
+  # Searches the database for the given player to retrieve
+  # his/her information.
+  #
+  # Parameter::
+  #   user_data:: An array with the player's username
+  #               and password.
+  #
+  # Returns::
+  #   - If the player was not found, then it returns nil.
+  #   - If an error occurred, then it returns an array with the
+  #     error message and a nil object.
+  #   - If everything went right, it returns an array with a
+  #     success message and the player's retrieved information.
   def retrieve(*user_data)
     usr = user_data[0]
     pswd = user_data[1]
