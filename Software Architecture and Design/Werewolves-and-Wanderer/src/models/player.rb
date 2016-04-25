@@ -50,7 +50,7 @@ class Player
   # Returns:: This player's attributes as a string.
   def to_s
     "Name: #{@name} -> Strength: #{@strength} -> Wealth: #{@wealth} \
-    -> Monsters: #{@monster_tally} -> Current Room: #{@curr_room}\n"
+    -> Monsters: #{@monster_tally}\n"
   end
 
 end

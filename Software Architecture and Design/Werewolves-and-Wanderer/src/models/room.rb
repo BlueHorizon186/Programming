@@ -15,14 +15,30 @@ class Room
   # The room's description.
   attr_reader :description
 
+  # The possible choices the player can make in this room.
+  attr_reader :choices
+
   # Creates a new +Room+ instance with the given description.
   #
   # Parameters::
   #   name:: The room's name.
   #   desc:: The room's description.
-  def initialize(name, desc)
+  #   choices:: The room's possible choice alternatives.
+  def initialize(name, desc, choices = [])
     @name = name
     @description = desc
+    @choices = choices
+  end
+
+  # Numbers the possible decisions listed in the _choices_
+  # array and builds a list with it. Used in the console
+  # version of the game only.
+  #
+  # Returns:: A string with the choices' numbered list.
+  def show_choices
+    decision_list = "\n"
+    choices.each_with_index {|e, i| decision_list << "#{i+1}. #{e}\n"}
+    decision_list
   end
 
   # Get a string with all the room's necessary information for
