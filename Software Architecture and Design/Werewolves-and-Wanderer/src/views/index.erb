@@ -4,21 +4,19 @@
 
 <!-- File: views/index.erb -->
 
-<h1>Werewolves and Wanderer</h1>
-<p>We need to use Bootstrap!</p>
+<div class="jumbotron gametext text-center">
+  <h1>Werewolves and Wanderer</h1>
+  <br/>
+  <p>This Adventure, WEREWOLVES AND WANDERER (where you are the wanderer, and the werewolves and other unsavory creatures inhabit the imaginary environment you are about to visit), takes place within an ancient, abandoned, stone castle.</p>
+  <br/>
 
-<form method="post">
+  <h3>Become part of this adventure!</h3>
   <p>
-    <label>Username: </label>
-    <input type="text" name="usrtxt"/>
+    <a href="/login" class="btn btn-primary btn-lg"
+      role="button">Login</a>
   </p>
-
   <p>
-    <label>Password: </label>
-    <input type="password" name="usrpswd"/>
+    <a href="/signup" class="btn btn-primary btn-lg"
+      role="button">Sign Up</a>
   </p>
-
-  <p>
-    <input type="submit" value="Sign Up!"/>
-  </p>
-</form>
+</div>

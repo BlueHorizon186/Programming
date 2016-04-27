@@ -20,14 +20,22 @@ get '/welcome' do
   erb :index
 end
 
-post '/welcome' do
-  session[:user] = params[:usrtxt]
-  session[:password] = params[:usrpswd]
-  redirect '/signupsuccess'
+get '/login' do
+  erb :login
 end
 
-get '/signupsuccess' do
-  @message = GameInstanceFactory.load_game(session[:user], session[:password])
-  if @message[1].nil? then @message = ['NULL', @message[0]] end
-  erb :signup_success
+get '/signup' do
+  erb :signup
 end
+
+# post '/welcome' do
+#   session[:user] = params[:usrtxt]
+#   session[:password] = params[:usrpswd]
+#   redirect '/signupsuccess'
+# end
+
+# get '/signupsuccess' do
+#   @message = GameInstanceFactory.load_game(session[:user], session[:password])
+#   if @message[1].nil? then @message = ['NULL', @message[0]] end
+#   erb :signup_success
+# end

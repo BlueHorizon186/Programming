@@ -1,0 +1,38 @@
+/* Final Project: A Text Adventure Game */
+/* Date: 05-May-2016 */
+/* Author: A01371166 Ivan David Diaz Sanchez */
+
+/* File: public/css/styles.css */
+
+@import url("../bootstrap-3.3.6/css/bootstrap.min.css");
+@import url("../bootstrap-3.3.6/css/bootstrap-theme.css");
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-image: url("../images/space-wallpaper.jpg");
+  min-height: 100%;
+  margin-bottom: 30px;
+}
+
+.jumbotron {
+  position: absolute;
+  background-color: transparent !important;
+}
+
+.gametext {
+  color: white;
+  width: 100%
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  background-color: #purple;
+}
