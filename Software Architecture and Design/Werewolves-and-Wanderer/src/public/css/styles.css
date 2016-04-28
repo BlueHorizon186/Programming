@@ -36,12 +36,37 @@ body {
   margin-right: auto;
   padding-bottom: 5%;
   position: relative;
-  top: 100px;
+  top: 70px;
   width: 90%;
 }
 
 #logintext {
   color: white;
+}
+
+#loginicon {
+  display: block;
+  margin: 2% auto;
+}
+
+.titlelabel {
+  color: #ffffff;
+  font-family: 'Lato', sans-serif;
+  font-size: 54px;
+  font-weight: 300;
+  line-height: 35px;
+  margin: 0 0 35px;
+  text-align: center;
+}
+
+.subtitlelabel {
+  color: #ffffff;
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 27px;
+  margin: 0 0 27px;
+  text-align: center;
 }
 
 .footer {
