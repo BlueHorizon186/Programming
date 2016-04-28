@@ -4,4 +4,35 @@
 
 <!-- File: views/login.erb -->
 
-<p>Here will go the Login Screen!</p>
+<div class="loginbg">
+  <form class="form-horizontal">
+
+  <img src="../images/castle-icon.png" alt="castleicon"/>
+
+    <div class="form-group">
+      <label for="inputusr" class="col-sm-3 control-label" id="logintext">
+        Player Username: 
+      </label>
+
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="inputusr">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputpswd" class="col-sm-3 control-label" id="logintext">
+        Password: 
+      </label>
+
+      <div class="col-sm-7">
+        <input type="password" class="form-control" id="inputpswd">
+      </div>
+    </div>
+
+    <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-7">
+      <button type="submit" class="btn btn-primary">Sign In!</button>
+    </div>
+  </div>
+  </form>
+</div>
