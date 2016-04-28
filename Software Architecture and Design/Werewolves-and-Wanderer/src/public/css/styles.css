@@ -20,8 +20,8 @@ body {
 }
 
 .jumbotron {
-  position: absolute;
   background-color: transparent !important;
+  position: absolute;
 }
 
 .gametext {
@@ -36,7 +36,6 @@ body {
   margin-right: auto;
   padding-bottom: 5%;
   position: relative;
-  top: 70px;
   width: 90%;
 }
 
@@ -67,6 +66,10 @@ body {
   line-height: 27px;
   margin: 0 0 27px;
   text-align: center;
+}
+
+#gamenavmenu {
+  background:rgba(7,36,30,0.8); 
 }
 
 .footer {

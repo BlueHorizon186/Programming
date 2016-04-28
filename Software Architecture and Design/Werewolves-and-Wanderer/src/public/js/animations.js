@@ -8,3 +8,7 @@
 $(function() {
   $('.jumbotron').animate({top: '10%'}, 300, 'linear');
 });
+
+$(function() {
+  $('.loginbg').animate({top: '70px'}, 300, 'linear');
+});

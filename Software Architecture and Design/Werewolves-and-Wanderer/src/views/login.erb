@@ -12,24 +12,24 @@
   <p class="titlelabel">Log In</p>
   <p class="subtitlelabel">Please enter your credentials.</p>
 
-  <form class="form-horizontal">
+  <form class="form-horizontal" method="post">
     <div class="form-group">
       <label for="inputusr" class="col-sm-3 control-label" id="logintext">
-        Player Username: 
+        Player Username *: 
       </label>
 
       <div class="col-sm-7">
-        <input type="text" class="form-control" id="inputusr">
+        <input type="text" class="form-control" id="inputusr" name="usr">
       </div>
     </div>
 
     <div class="form-group">
       <label for="inputpswd" class="col-sm-3 control-label" id="logintext">
-        Password: 
+        Password *: 
       </label>
 
       <div class="col-sm-7">
-        <input type="password" class="form-control" id="inputpswd">
+        <input type="password" class="form-control" id="inputpswd" name="pswd">
       </div>
     </div>
 

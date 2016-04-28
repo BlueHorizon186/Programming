@@ -12,6 +12,7 @@ set :port, ENV['PORT']
 enable :sessions
 set :session_secret, 'SecretString#!$%'
 
+# Home Screen
 get '/' do
   redirect '/welcome'
 end
@@ -20,12 +21,34 @@ get '/welcome' do
   erb :index
 end
 
+# Login Screen and Post Processing
 get '/login' do
   erb :login
 end
 
+post '/login' do
+  message = GameInstanceFactory.load_game(params[:usr], params[:pswd])
+  # Login failure pending...
+  if message[1].nil? then message = ['NULL', @message[0]] end
+  session[:pl_inst] = message
+  redirect '/loginsuccess'
+end
+
+get '/loginsuccess' do
+  sleep 1.0
+  redirect '/gameadv'
+end
+
+# Sign Up Screen and Post Processing
 get '/signup' do
   erb :signup
+end
+
+# Game!
+get '/gameadv' do
+  # Here will go all the game logic management and user interaction.
+  # It will be aided by jQuery functionality.
+  erb :game
 end
 
 # post '/welcome' do
