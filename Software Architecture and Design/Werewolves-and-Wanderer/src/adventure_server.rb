@@ -56,7 +56,7 @@ get '/gameadv' do
   # logging in.
   if session[:pl_inst].nil? then redirect '/login' end
 
-  @username = session[:pl_inst].player.name
+  @next_state = session[:pl_inst].play_next
   erb :game
 end
 
@@ -64,4 +64,13 @@ end
 get '/logout' do
   session[:pl_inst] = nil
   redirect '/welcome'
+end
+
+# New game function
+get '/newgame' do
+  session[:pl_inst].player.curr_room = nil
+  session[:pl_inst].player.strength = 50
+  session[:pl_inst].player.wealth = 50
+  session[:pl_inst].player.monster_tally = 0
+  redirect '/gameadv'
 end

@@ -37,7 +37,7 @@ class GameInstance
   #
   # Returns:: A string with a brief introduction to the game.
   def begin_game
-    @player.curr_room = @game_map.entrance
+    #@player.curr_room = @game_map.entrance
     "Welcome to Werewolves and Wanderer!\n
     Do you have what it takes to overcome the fearsome obstacles
     lurking inside the castle?\n
@@ -50,8 +50,16 @@ class GameInstance
   # decides to save and quit or he/she loses all the strength.
   # Calls the +begin_game+ method if the player creates a
   # fresh new game.
-  def play
+  def play_next
     if @player.curr_room.nil? then begin_game end
+  end
+
+  # Updates the player's *current_room* status according to
+  # his/her input selection.
+  #
+  # Parameter::
+  #   choice:: The player's selection.
+  def move_to_choice(choice)
   end
 
   # Get a string containing the representation for this
