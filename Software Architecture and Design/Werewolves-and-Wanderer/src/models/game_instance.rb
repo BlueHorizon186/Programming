@@ -37,7 +37,7 @@ class GameInstance
   #
   # Returns:: A string with a brief introduction to the game.
   def begin_game
-    #@player.curr_room = @game_map.entrance
+    @player.curr_room = @game_map.entrance
     "Welcome to Werewolves and Wanderer!\n
     Do you have what it takes to overcome the fearsome obstacles
     lurking inside the castle?\n
@@ -51,7 +51,8 @@ class GameInstance
   # Calls the +begin_game+ method if the player creates a
   # fresh new game.
   def play_next
-    if @player.curr_room.nil? then begin_game end
+    begin_game if @player.curr_room.nil?
+    @player.curr_room.content
   end
 
   # Updates the player's *current_room* status according to

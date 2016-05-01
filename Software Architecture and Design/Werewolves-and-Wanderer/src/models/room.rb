@@ -47,7 +47,7 @@ class Room
   #
   # Returns:: The room's attributes in a built string.
   def to_s
-    "#{@name}\n#{@description}"
+    "#{@name}:\n#{@description}"
   end
 
 end

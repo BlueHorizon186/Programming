@@ -56,7 +56,10 @@ get '/gameadv' do
   # logging in.
   if session[:pl_inst].nil? then redirect '/login' end
 
-  @next_state = session[:pl_inst].play_next
+  @username = session[:pl_inst].player.name
+  next_state = session[:pl_inst].play_next
+  @next_room = next_state.name
+  @next_desc = next_state.description
   erb :game
 end
 
