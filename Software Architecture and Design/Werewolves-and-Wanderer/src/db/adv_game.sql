@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS `Players`(
   `strength` INTEGER NOT NULL DEFAULT 50,
   `wealth` INTEGER NOT NULL DEFAULT 50,
   `monster_tally` INTEGER NOT NULL DEFAULT 0,
-  `current_room` INTEGER NULL);
+  `current_room` TEXT NULL);

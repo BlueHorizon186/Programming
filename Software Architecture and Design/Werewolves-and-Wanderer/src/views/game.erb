@@ -6,6 +6,32 @@
 
 <nav class="navbar navbar-inverse" id="gamenavmenu">
   <div class="container-fluid">
-    
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><p class="gametext" style="display:inline">
+        A Link :D
+      </p></a></li>
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+          role="button" aria-haspopup="true" aria-expanded="false">
+          <p class="gametext" style="display:inline">
+            Hello <%= @username %>!
+          </p><span class="caret"/>
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a href="#">New Game</a></li>
+          <li><a href="#">Status</a></li>
+          <li role="separator" class="divider"/>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+
   </div>
 </nav>
+
+<div class="gamebg">
+  <h1 class="gametext text-center">Game Goes Here</h1>
+</div>

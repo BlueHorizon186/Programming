@@ -2,22 +2,24 @@
 <!-- Date: 05-May-2016 -->
 <!-- Author: A01371166 Ivan David Diaz Sanchez -->
 
-<!-- File: views/signup.erb -->
+<!-- File: views/login.erb -->
 
 <div class="loginbg">
   <div class="row">
-    <img src="../images/entrance-icon.png" alt="entryicon" id="loginicon">
+    <img src="../images/castle-icon.png" alt="castleicon" id="loginicon">
   </div>
 
-  <p class="titlelabel">Sign Up</p>
-  <p class="subtitlelabel">
-    Please enter the required information in the form below.
-  </p>
+  <p class="titlelabel">Log In</p>
+  <p class="subtitlelabel">Please enter your credentials.</p>
+
+  <div class="alert alert-danger" role="alert">
+    The username and/or password are incorrect.
+  </div>
 
   <form class="form-horizontal" method="post">
-    <div class="form-group">
+    <div class="form-group has-error">
       <label for="inputusr" class="col-sm-3 control-label" id="logintext">
-        New Username *: 
+        Player Username *: 
       </label>
 
       <div class="col-sm-7">
@@ -25,9 +27,9 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group has-error">
       <label for="inputpswd" class="col-sm-3 control-label" id="logintext">
-        New Password *: 
+        Password *: 
       </label>
 
       <div class="col-sm-7">
@@ -37,7 +39,7 @@
 
     <div class="form-group">
     <div class="col-sm-offset-3 col-sm-7">
-      <button type="submit" class="btn btn-primary">Sign Up!</button>
+      <button type="submit" class="btn btn-primary">Sign In!</button>
     </div>
   </div>
   </form>

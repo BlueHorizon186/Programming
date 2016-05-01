@@ -30,7 +30,7 @@ class GameInstanceFactory
   #           message and the fresh +GameInstance+ object.
   def self.new_game(user, password)
     db_status = @@db.insert(user, password)
-    @@player = Player.new(user)
+    @@player = Player.new(Hash.new(user))
     [db_status, self.new_instance]
   end
 

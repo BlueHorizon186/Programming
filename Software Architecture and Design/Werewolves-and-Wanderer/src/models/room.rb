@@ -37,7 +37,7 @@ class Room
   # Returns:: A string with the choices' numbered list.
   def show_choices
     decision_list = "\n"
-    choices.each_with_index {|e, i| decision_list << "#{i+1}. #{e}\n"}
+    @choices.each_with_index {|e, i| decision_list << "#{i+1}. #{e}\n"}
     decision_list
   end
 

@@ -4,6 +4,8 @@
 
 # File: models/game_instance.rb
 
+require_relative './game_tree'
+
 # The +GameInstance+ class represents an object that will
 # manage each individual player's game. It is in charge of
 # handling their inputs, events according to said inputs,
@@ -13,16 +15,26 @@ class GameInstance
   # The player this GameInstance will be managing.
   attr_reader :player
 
+  # The tree representing the map of the entire game. Uses the
+  # RubyTree gem.
+  attr_reader :game_map
+
   # Creates a new +GameInstance+ instance. Do not call this
   # method directly. Use the GameInstanceFactory::new_instance
   # instead because each player's data must be recorded in the
   # database, if it's a new player account, or retrieved if
-  # it's a previously registered player.
+  # it's a previously registered player. For new games, the room
+  # is automatically set to the castle's entrance.
   #
   # Parameter::
   #   player:: The player this GameInstance is in charge of.
   def initialize(player)
     @player = player
+    @game_map = GameTree.new
+
+    if @player.curr_room.nil? then
+      @player.curr_room = @game_map.entrance
+    end
   end
 
   # Get a string containing the representation for this

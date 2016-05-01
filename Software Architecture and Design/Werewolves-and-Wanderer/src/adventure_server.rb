@@ -23,19 +23,20 @@ end
 
 # Login Screen and Post Processing
 get '/login' do
+  unless session[:pl_inst].nil?
+    redirect '/gameadv'
+  end
   erb :login
 end
 
 post '/login' do
-  message = GameInstanceFactory.load_game(params[:usr], params[:pswd])
-  # Login failure pending...
-  if message[1].nil? then message = ['NULL', @message[0]] end
-  session[:pl_inst] = message
-  redirect '/loginsuccess'
-end
+  # Right now, we are assuming the user will always enter valid
+  # credentials. The error handling wil be made later.
+  g_inst = GameInstanceFactory.load_game(params[:usr], params[:pswd])
+  session[:pl_inst] = g_inst[1]
 
-get '/loginsuccess' do
-  sleep 1.0
+  # Login failure pending...
+  # if message[1].nil? then redirect '/loginerror' end
   redirect '/gameadv'
 end
 
@@ -44,11 +45,29 @@ get '/signup' do
   erb :signup
 end
 
+post '/signup' do
+  g_inst = GameInstanceFactory.new_game(params[:usr], params[:pswd])
+  session[:pl_inst] = g_inst[1]
+  redirect '/gameadv'
+end
+
 # Game!
 get '/gameadv' do
   # Here will go all the game logic management and user interaction.
   # It will be aided by jQuery functionality.
+
+  # Temporary: Prevent users from accessing this page without
+  # logging in.
+  if session[:pl_inst].nil? then redirect '/login' end
+
+  @username = session[:pl_inst].player.name
   erb :game
+end
+
+# Logout function
+get '/logout' do
+  session[:pl_inst] = nil
+  redirect '/welcome'
 end
 
 # post '/welcome' do

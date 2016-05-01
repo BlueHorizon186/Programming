@@ -72,6 +72,16 @@ body {
   background:rgba(7,36,30,0.8); 
 }
 
+.gamebg {
+  background:rgba(0,4,19,0.9);
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 9%;
+  position: relative;
+  width: 90%;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
