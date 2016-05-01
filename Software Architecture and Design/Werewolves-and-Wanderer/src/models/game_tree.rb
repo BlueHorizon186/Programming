@@ -14,6 +14,12 @@ require_relative './event'
 # order to store the castle map used throughout the game.
 # It links all rooms and events according to the original
 # game script to guide the player through the adventure.
+#
+# Each node contains either a +Room+ object or an +Event+
+# object with its respective description. The +Room+ objects
+# also contain an array with all the possible choices the
+# player can make there. The first index will always refer
+# to the parent node, i.e. the previous room.
 class GameTree
 
   # The first room of the castle. In this case, it's the entrance.

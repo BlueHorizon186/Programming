@@ -31,7 +31,7 @@ end
 
 post '/login' do
   # Right now, we are assuming the user will always enter valid
-  # credentials. The error handling wil be made later.
+  # credentials. The error handling will be made later.
   g_inst = GameInstanceFactory.load_game(params[:usr], params[:pswd])
   session[:pl_inst] = g_inst[1]
 
