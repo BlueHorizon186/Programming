@@ -36,7 +36,6 @@ post '/login' do
   session[:pl_inst] = g_inst[1]
 
   # Login failure pending...
-  # if message[1].nil? then redirect '/loginerror' end
   redirect '/gameadv'
 end
 
@@ -53,9 +52,6 @@ end
 
 # Game!
 get '/gameadv' do
-  # Here will go all the game logic management and user interaction.
-  # It will be aided by jQuery functionality.
-
   # Temporary: Prevent users from accessing this page without
   # logging in.
   if session[:pl_inst].nil? then redirect '/login' end
@@ -69,15 +65,3 @@ get '/logout' do
   session[:pl_inst] = nil
   redirect '/welcome'
 end
-
-# post '/welcome' do
-#   session[:user] = params[:usrtxt]
-#   session[:password] = params[:usrpswd]
-#   redirect '/signupsuccess'
-# end
-
-# get '/signupsuccess' do
-#   @message = GameInstanceFactory.load_game(session[:user], session[:password])
-#   if @message[1].nil? then @message = ['NULL', @message[0]] end
-#   erb :signup_success
-# end

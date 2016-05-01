@@ -59,7 +59,7 @@ class GameTree
   end
 
   # Calls the +RubyTree+ *print_tree* method to print
-  # all the nodes so far.
+  # all the nodes so far. Used for debugging purposes only.
   def print_map
     @entrance.print_tree
   end

@@ -12,3 +12,9 @@ $(function() {
 $(function() {
   $('.loginbg').animate({top: '70px'}, 300, 'linear');
 });
+
+$(function() {
+  $('.gamebg').animate({top: '20px',
+                        height: '85%'},
+    1000, 'linear');
+});
