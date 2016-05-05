@@ -18,14 +18,14 @@ class DatabaseManager
 
   include Singleton
 
-  # Inserts a new player's information to the database.
+  # Inserts a new player's information to the database. (Pending...)
   #
   # Parameter::
   #   user_data:: An array with the player's username
   #               and password.
   #
-  # Returns:: A message indicating success or the error that
-  #           was produced, if any.
+  # Returns:: The recently added player's assigned id, or the
+  # error message in case it occurs.
   def insert(*user_data)
     usr = user_data[0]
     pswd = user_data[1]
@@ -37,7 +37,10 @@ class DatabaseManager
       return e.message
     end
 
-    'Your player account has been successfully created!'
+    new_id = 0
+    DB.fetch("select * from SQLITE_SEQUENCE WHERE name='Players'") \
+              { |row| new_id = row[:seq] }
+    new_id
   end
 
   # Searches the database for the given player to retrieve
@@ -63,9 +66,8 @@ class DatabaseManager
       requested_pl = players[:name => usr, :password => pswd]
 
       if requested_pl.nil? then return nil end
-
-      requested_pl.delete(:id)
       requested_pl.delete(:password)
+
     rescue Sequel::Error => e
       return [e.message, nil]
     end

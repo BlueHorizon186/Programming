@@ -29,9 +29,9 @@ class GameTree
   def initialize
     @entrance = Tree::TreeNode.new('Entrance', \
                   Room.new('Entrance', \
-                    "You are at the entrance of a forbidding-looking
+                    'You are at the entrance of a forbidding-looking
                     stone castle. You are facing east. The huge wooden
-                    entrance door stands lightly open.",
+                    entrance door stands lightly open.',
                     ['Enter the Castle']))
     initialize_rooms_and_events
   end
@@ -41,19 +41,19 @@ class GameTree
   def initialize_rooms_and_events
     n_hallway_e = Tree::TreeNode.new('Hallway Entrance', \
                     Room.new('Hallway Entrance', \
-                      "You are in the hallway entrance to the castle.
+                      'You are in the hallway entrance to the castle.
                       It is dark and gloomy, and the air of decay and
                       desolation is very depressing. You suddenly feel
-                      very frightened.",
+                      very frightened.',
                       ['Run away', 'Proceed through South Door']))
     @entrance << n_hallway_e
 
     n_audience_ch = Tree::TreeNode.new('Audience Chamber', \
                       Room.new('Audience Chamber', \
-                        "The faded tapestries on the wall only hint at
+                        'The faded tapestries on the wall only hint at
                         the splendor which this room once had. There is
                         a window to the west. By craning your neck through
-                        it to the right you can see the castle entrance.",
+                        it to the right you can see the castle entrance.',
                         ['Leave by north', 'Leave by south or east']))
     n_hallway_e << n_audience_ch
   end
@@ -68,3 +68,4 @@ end
 # For debugging purposes only.
 # gtree = GameTree.new
 # gtree.print_map
+# puts gtree.entrance[0]

@@ -23,30 +23,26 @@ end
 
 # Login Screen and Post Processing
 get '/login' do
-  unless session[:pl_inst].nil?
+  unless session[:pl_id].nil?
     redirect '/gameadv'
   end
   erb :login
 end
 
 post '/login' do
-  # Right now, we are assuming the user will always enter valid
-  # credentials. The error handling will be made later.
-  g_inst = GameInstanceFactory.load_game(params[:usr], params[:pswd])
-  session[:pl_inst] = g_inst[1]
-
   # Login failure pending...
+  session[:pl_id] = GameInstanceFactory.load_game(params[:usr],
+                                                  params[:pswd])
   redirect '/gameadv'
 end
 
-# Sign Up Screen and Post Processing
+# Sign Up Screen and Post Processing (Pending...)
 get '/signup' do
   erb :signup
 end
 
 post '/signup' do
-  g_inst = GameInstanceFactory.new_game(params[:usr], params[:pswd])
-  session[:pl_inst] = g_inst[1]
+  session[:pl_id] = GameInstanceFactory.new_game(params[:usr], params[:pswd])
   redirect '/gameadv'
 end
 
@@ -54,26 +50,51 @@ end
 get '/gameadv' do
   # Temporary: Prevent users from accessing this page without
   # logging in.
-  if session[:pl_inst].nil? then redirect '/login' end
+  if session[:pl_id].nil? then redirect '/login' end
 
-  @username = session[:pl_inst].player.name
-  next_state = session[:pl_inst].play_next
-  @next_room = next_state.name
+  game_inst = GameInstanceFactory.refresh_game(session[:pl_id])
+
+  player = game_inst.player
+  next_state = game_inst.play_next
+
+  if next_state.is_a?(Room) then
+    @next_st = next_state.name
+    @next_choices = next_state.choices
+  elsif next_state.is_a?(Event)
+    @next_st = 'Event'
+    @next_choices = ['Return']
+    @victory = next_state.trigger
+    @message = ''
+
+    unless @victory.nil?
+      if @victory then @message = next_state.victory_msg
+      else @message = next_state.failure_msg end
+    end
+
+    game_inst.apply_event_effects
+  end
+
+  @username = player.name
+  @str = player.strength
+  @wealth = player.wealth
+  @monsters = player.monster_tally
   @next_desc = next_state.description
   erb :game
 end
 
+post '/gameadv' do
+  game_inst = GameInstanceFactory.refresh_game(session[:pl_id])
+  game_inst.move_to_choice(params[:btn].to_i)
+  redirect '/gameadv'
+end
+
 # Logout function
 get '/logout' do
-  session[:pl_inst] = nil
+  session[:pl_id] = nil
   redirect '/welcome'
 end
 
 # New game function
 get '/newgame' do
-  session[:pl_inst].player.curr_room = nil
-  session[:pl_inst].player.strength = 50
-  session[:pl_inst].player.wealth = 50
-  session[:pl_inst].player.monster_tally = 0
   redirect '/gameadv'
 end

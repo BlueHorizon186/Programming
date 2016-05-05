@@ -15,6 +15,6 @@ $(function() {
 
 $(function() {
   $('.gamebg').animate({top: '20px',
-                        height: '85%'},
+                        height: '550px'},
     1000, 'linear');
 });

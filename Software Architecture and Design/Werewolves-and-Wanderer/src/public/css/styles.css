@@ -17,6 +17,7 @@ body {
   background-size: 100% 100%;
   min-height: 100%;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 
 .jumbotron {
@@ -80,6 +81,77 @@ body {
   padding-bottom: 9%;
   position: relative;
   width: 90%;
+}
+
+#healthbar {
+  margin-left: 2%;
+  margin-top: 4%;
+  position: absolute;
+  width: 35%;
+}
+
+#healthlabel {
+  margin-left: 3%;
+  margin-top: 2%;
+  position: absolute;
+}
+
+#wealthvalue {
+  margin-left: 68%;
+  margin-top: 4%;
+  position: absolute;
+}
+
+#wealthlabel {
+  margin-left: 67%;
+  margin-top: 2%;
+  position: absolute;
+}
+
+#m_tvalue {
+  margin-left: 85%;
+  margin-top: 4%;
+  position: absolute;
+}
+
+#m_tlabel {
+  margin-left: 82%;
+  margin-top: 2%;
+  position: absolute;
+}
+
+#roomeventname {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+  padding-top: 2%;
+  width: 25%;
+
+  background: -webkit-linear-gradient(#fff, #777);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#roomeventtext {
+  font-size: 20px;
+  margin: auto auto;
+  padding-top: 5%;
+}
+
+.choiceform {
+  text-align: center;
+  padding-top: 5%;
+}
+
+ul#choicebuttons li {
+  display: inline;
+}
+
+#choicebtn {
+  background-color: black !important;
 }
 
 .footer {

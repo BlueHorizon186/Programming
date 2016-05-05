@@ -33,6 +33,34 @@
 </nav>
 
 <div class="gamebg">
-  <h4 class="gametext text-center"><%= @next_room %>:</h4>
-  <h4 class="gametext text-center"><%= @next_desc %></h4>
+  <h4 class="gametext" id="healthlabel"><strong>Health</strong></h4>
+  <h4 class="gametext" id="wealthlabel"><strong>Wealth</strong></h4>
+  <h4 class="gametext" id="m_tlabel"><strong>Monster Tally</strong></h4>
+
+  <h4 class="gametext" id="wealthvalue"<strong>$<%= @wealth %></strong></h4>
+  <h4 class="gametext" id="m_tvalue"<strong><%= @monsters %> KOs</strong></h4>
+
+  <div class="progress" id="healthbar">
+    <div class="progress-bar progress-bar-success" role="progressbar"
+      aria-valuenow="<%= @str %>" aria-valuemin="0" aria-valuemax="100"
+      style="width: <%= @str %>%">
+        <strong><%= @str %> points</strong>
+    </div>
+  </div>
+
+  <p class="gametext text-center" id="roomeventname"><%= @next_st %></p>
+  <p class="gametext text-center" id="roomeventtext"><%= @next_desc %></p>
+
+  <% if @next_st == 'Event' then %>
+    <p class="gametext text-center" id="roomeventtext"><%= @message %></p>
+  <% end %>
+
+  <form method="post" action="/gameadv" class="choiceform">
+    <ul id="choicebuttons">
+      <% @next_choices.each_with_index do |ch, i| %>
+        <li><button type="submit" class="btn btn-primary" id="choicebtn"
+              name="btn" value="<%= i %>"><%= ch %></button></li>
+      <% end %>
+    </ul>
+  </form>
 </div>
