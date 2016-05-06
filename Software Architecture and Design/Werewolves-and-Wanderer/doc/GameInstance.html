@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class GameInstance - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-apply_event_effects">#apply_event_effects</a>
+    
+    <li ><a href="#method-i-begin_game">#begin_game</a>
+    
+    <li ><a href="#method-i-move_to_choice">#move_to_choice</a>
+    
+    <li ><a href="#method-i-play_next">#play_next</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+    <li ><a href="#method-i-update_yaml">#update_yaml</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-GameInstance">
+  <h1 id="class-GameInstance" class="class">
+    class GameInstance
+  </h1>
+
+  <section class="description">
+    
+<p>The <code>GameInstance</code> class represents an object that will manage
+each individual player&#39;s game. It is in charge of handling their
+inputs, events according to said inputs, and managing the game progress in
+general.</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-game_map" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">game_map</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>The tree representing the map of the entire game. Uses the RubyTree gem.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-player" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">player</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>The player this <a href="GameInstance.html">GameInstance</a> will be
+managing.</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(player)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new <code>GameInstance</code> instance. Do not call this method
+directly. Use the <a
+href="GameInstanceFactory.html#method-c-new_instance">GameInstanceFactory.new_instance</a>
+instead because each player&#39;s data must be recorded in the database, if
+it&#39;s a new player account, or retrieved if it&#39;s a previously
+registered player.</p>
+<dl class="rdoc-list note-list"><dt>Parameter
+<dd><dl class="rdoc-list note-list"><dt>player
+<dd>
+<p>The player this <a href="GameInstance.html">GameInstance</a> is in charge
+of.</p>
+</dd></dl>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">player</span>)
+  <span class="ruby-ivar">@player</span> = <span class="ruby-identifier">player</span>
+  <span class="ruby-ivar">@game_map</span> = <span class="ruby-constant">GameTree</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-apply_event_effects" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">apply_event_effects</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Whenever an event is triggered, it impacts the player somehow. This method
+updates the player&#39;s stats accordingly.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="apply_event_effects-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_event_effects</span>
+  <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">strength</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>.<span class="ruby-identifier">content</span>.<span class="ruby-identifier">str_effect</span>
+  <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">wealth</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>.<span class="ruby-identifier">content</span>.<span class="ruby-identifier">wlth_effect</span>
+  <span class="ruby-identifier">update_yaml</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-begin_game" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">begin_game</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the player&#39;s current room to the castle&#39;s entrance and
+introduces him/her to the game.</p>
+<dl class="rdoc-list note-list"><dt>Returns
+<dd>
+<p>A string with a brief introduction to the game.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="begin_game-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">begin_game</span>
+  <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span> = <span class="ruby-ivar">@game_map</span>.<span class="ruby-identifier">entrance</span>
+  <span class="ruby-identifier">update_yaml</span>
+  <span class="ruby-string">&quot;Welcome to Werewolves and Wanderer!\n
+  Do you have what it takes to overcome the fearsome obstacles
+  lurking inside the castle?\n
+  Click the \&quot;Begin\&quot; button to start and find out!&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-move_to_choice" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">move_to_choice</span><span
+            class="method-args">(choice)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Updates the player&#39;s <strong>current_room</strong> status according to
+his/her input selection.</p>
+<dl class="rdoc-list note-list"><dt>Parameter
+<dd><dl class="rdoc-list note-list"><dt>choice
+<dd>
+<p>The player&#39;s selection.</p>
+</dd></dl>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="move_to_choice-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">move_to_choice</span>(<span class="ruby-identifier">choice</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Entrance&#39;</span>
+    <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span> = <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>[<span class="ruby-value">0</span>]
+
+  <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>.<span class="ruby-identifier">content</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Event</span>)
+    <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span> = <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>.<span class="ruby-identifier">parent</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">choice</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span> = <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>.<span class="ruby-identifier">parent</span>
+    <span class="ruby-keyword">else</span> <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span> = <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>[<span class="ruby-identifier">choice</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>.<span class="ruby-identifier">content</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Event</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">content</span>.<span class="ruby-identifier">has_events</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">update_yaml</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-play_next" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">play_next</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The game&#39;s main loop. It is in charge of handling player interaction
+and displaying the player&#39;s and the game&#39;s current state
+information. It ends whenever the player decides to save and quit or he/she
+loses all the strength. Calls the <code>begin_game</code> method if the
+player creates a fresh new game.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="play_next-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">play_next</span>
+  <span class="ruby-identifier">begin_game</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>.<span class="ruby-identifier">content</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get a string containing the representation for this game instance. Used for
+debugging purposes.</p>
+<dl class="rdoc-list note-list"><dt>Returns
+<dd>
+<p>This game instance&#39;s attributes as a string.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-node">&quot;Instance&#39;s Player: #{@player.to_s}\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update_yaml" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_yaml</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>After each one of the player&#39;s choices, his/her respective YAML file is
+updated with the appropriate information, which is stored in this player
+object instance.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="update_yaml-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_yaml</span>
+  <span class="ruby-identifier">file_path</span> = <span class="ruby-node">&quot;#{YAML_FILES_PATH}/y_#{@player.id}.yaml&quot;</span>
+  <span class="ruby-identifier">data</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">file_path</span>)
+
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">player</span>.<span class="ruby-identifier">strength</span> = <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">strength</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">player</span>.<span class="ruby-identifier">wealth</span> = <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">wealth</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">player</span>.<span class="ruby-identifier">monster_tally</span> = <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">monster_tally</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">player</span>.<span class="ruby-identifier">curr_room</span> = <span class="ruby-ivar">@player</span>.<span class="ruby-identifier">curr_room</span>
+
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_path</span>, <span class="ruby-string">&#39;w&#39;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">f</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

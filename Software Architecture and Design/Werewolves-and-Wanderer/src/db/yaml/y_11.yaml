@@ -1,0 +1,520 @@
+--- !ruby/object:GameInstance
+player: !ruby/object:Player
+  id: 11
+  name: p2
+  strength: 75
+  wealth: 150
+  monster_tally: 2
+  curr_room: &10 !ruby/object:Tree::TreeNode
+    content: !ruby/object:Room
+      name: |-
+        You are in the prison guardroom, in the basement
+                              of the castle. The stairwell ends in this room. There is
+                              one other exit, a small hole in the east wall. The air is
+                              damp and unpleasant... a chill wind rushes into the room
+                              from gaps in the stone at the top of the walls.
+      description:
+      - Go up the stairs
+      - Go through hole in the east
+      choices: []
+      has_events: false
+    name: Prison Guardroom
+    parent: &5 !ruby/object:Tree::TreeNode
+      content: !ruby/object:Room
+        name: Inner Hallway
+        description: |-
+          You are in the inner hallway, which contains a door to
+                              the north one to the west, and a circular stairwell.
+                              The room is small and unfriendly.
+        choices:
+        - Leave by west
+        - Look down the stairwell
+        - Look up the stairs
+        - Leave by north door
+        - Go up the stairs
+        - Go down the stairs
+        has_events: false
+      name: Inner Hallway
+      parent: &3 !ruby/object:Tree::TreeNode
+        content: !ruby/object:Room
+          name: Great Hall
+          description: |-
+            There are two doors in the L-shaped room. You notice
+                                    the wood panels around the room are warped and faded.
+                                    As you look around, a mouse scampers across the floor.
+                                    You whirl around at a sudden noise.
+          choices:
+          - Leave by north or west
+          - Trigger
+          - Look out by the windows
+          - Move to east
+          has_events: false
+        name: Great Hall
+        parent: &2 !ruby/object:Tree::TreeNode
+          content: !ruby/object:Room
+            name: Audience Chamber
+            description: |-
+              The faded tapestries on the wall only hint at
+                                      the splendor which this room once had. There is
+                                      a window to the west. By craning your neck through
+                                      it to the right you can see the castle entrance.
+            choices:
+            - Leave by north
+            - Trigger
+            - Leave by south or east
+            has_events: false
+          name: Audience Chamber
+          parent: &1 !ruby/object:Tree::TreeNode
+            content: !ruby/object:Room
+              name: Hallway Entrance
+              description: |-
+                You are in the hallway entrance to the castle.
+                                      It is dark and gloomy, and the air of decay and
+                                      desolation is very depressing. You suddenly feel
+                                      very frightened.
+              choices:
+              - Run away
+              - Proceed through South Door
+              has_events: false
+            name: Hallway Entrance
+            parent: !ruby/object:Tree::TreeNode
+              content: !ruby/object:Room
+                name: Entrance
+                description: |-
+                  You are at the entrance of a forbidding-looking
+                                      stone castle. You are facing east. The huge wooden
+                                      entrance door stands lightly open.
+                choices:
+                - Enter the Castle
+                has_events: false
+              name: Entrance
+              parent: 
+              node_depth: 
+              children_hash:
+                Hallway Entrance: *1
+              children:
+              - *1
+            node_depth: 
+            children_hash:
+              Audience Chamber: *2
+            children:
+            - *2
+          node_depth: 
+          children_hash:
+            Audience_Ch_Ev: &4 !ruby/object:Tree::TreeNode
+              content: !ruby/object:Event
+                description: |-
+                  You must fight the fanatical Fleshgorger,
+                                            which suddenly stumbles into the room.
+                str_effect: 25
+                wlth_effect: 0
+                triggered: true
+                battle: true
+                victory_msg: You defeated the Fleshgorger!
+                failure_msg: You lost strength!
+              name: Audience_Ch_Ev
+              parent: *2
+              node_depth: 
+              children_hash: {}
+              children: []
+            Great Hall: *3
+          children:
+          - *4
+          - *3
+        node_depth: 
+        children_hash:
+          Great_Hall_Nothing: &6 !ruby/object:Tree::TreeNode
+            content: !ruby/object:Event
+              description: You see to your relief there is nothing there.
+              str_effect: 0
+              wlth_effect: 0
+              triggered: true
+              battle: false
+              victory_msg: 
+              failure_msg: 
+            name: Great_Hall_Nothing
+            parent: *3
+            node_depth: 
+            children_hash: {}
+            children: []
+          Great_Hall_Lookout: &7 !ruby/object:Tree::TreeNode
+            content: !ruby/object:Event
+              description: |-
+                By straining your eyes through the mist which
+                                              has swirled up while you've been exploring, you can
+                                              see below you, looking southwards, an ornamental lake.
+                                              By craning your neck round to the right through the
+                                              west window you can just see the entrance door to the
+                                              castle.
+              str_effect: 0
+              wlth_effect: 0
+              triggered: true
+              battle: false
+              victory_msg: 
+              failure_msg: 
+            name: Great_Hall_Lookout
+            parent: *3
+            node_depth: 
+            children_hash: {}
+            children: []
+          Inner Hallway: *5
+        children:
+        - *6
+        - *7
+        - *5
+      node_depth: 
+      children_hash:
+        Inner_Hall_Lookdown: &11 !ruby/object:Tree::TreeNode
+          content: !ruby/object:Event
+            description: |-
+              Looking down the stairwell, you can
+                                          see a gloomy, unpleasant looking room, the
+                                          guardroom of the ancient dungeon.
+            str_effect: 0
+            wlth_effect: 0
+            triggered: true
+            battle: false
+            victory_msg: 
+            failure_msg: 
+          name: Inner_Hall_Lookdown
+          parent: *5
+          node_depth: 
+          children_hash: {}
+          children: []
+        Inner_Hall_Lookup: &12 !ruby/object:Tree::TreeNode
+          content: !ruby/object:Event
+            description: |-
+              Looking up the stairwell you can just
+                                        make out an elaborately decorated hallway.
+            str_effect: 0
+            wlth_effect: 0
+            triggered: true
+            battle: false
+            victory_msg: 
+            failure_msg: 
+          name: Inner_Hall_Lookup
+          parent: *5
+          node_depth: 
+          children_hash: {}
+          children: []
+        Monarch's Room: &8 !ruby/object:Tree::TreeNode
+          content: !ruby/object:Room
+            name: Monarch's Meeting Room
+            description: |-
+              This is the monarch's private meeting room. The echo
+                                    of ancient plotting and wrangling hangs heavy in the
+                                    musty air.
+            choices:
+            - Exit through south door
+            - Trigger
+            has_events: false
+          name: Monarch's Room
+          parent: *5
+          node_depth: 
+          children_hash:
+            Monarch_R_Ev: &9 !ruby/object:Tree::TreeNode
+              content: !ruby/object:Event
+                description: |-
+                  You are attacked by a ghastly Gruesomeness,
+                                          which was hiding behind the drapes.
+                str_effect: 0
+                wlth_effect: 100
+                triggered: true
+                battle: true
+                victory_msg: You won and found an emerald!
+                failure_msg: |-
+                  The Gruesomeness stole
+                                          from you while you were exhausted.
+              name: Monarch_R_Ev
+              parent: *8
+              node_depth: 
+              children_hash: {}
+              children: []
+          children:
+          - *9
+        L-Shaped Upper Hallway: &13 !ruby/object:Tree::TreeNode
+          content: !ruby/object:Room
+            name: L-Shapped Upper Hallway
+            description: |-
+              You are in the L-shaped upper hallway of the castle.
+                                    A moth flutters across the room near the ceiling.
+                                    To the north is a door and there is a stairwell in the
+                                    hall as well.
+            choices:
+            - Go down where you came from
+            - Peek through the door
+            - Look down the new stairwell
+            - Go through the door
+            has_events: true
+          name: L-Shaped Upper Hallway
+          parent: *5
+          node_depth: 
+          children_hash: {}
+          children: []
+        Prison Guardroom: *10
+      children:
+      - *11
+      - *12
+      - *8
+      - *13
+      - *10
+    node_depth: 
+    children_hash: {}
+    children: []
+game_map: !ruby/object:GameTree
+  entrance: &14 !ruby/object:Tree::TreeNode
+    content: !ruby/object:Room
+      name: Entrance
+      description: |-
+        You are at the entrance of a forbidding-looking
+                            stone castle. You are facing east. The huge wooden
+                            entrance door stands lightly open.
+      choices:
+      - Enter the Castle
+      has_events: false
+    name: Entrance
+    parent: 
+    node_depth: 
+    children_hash:
+      Hallway Entrance: &15 !ruby/object:Tree::TreeNode
+        content: !ruby/object:Room
+          name: Hallway Entrance
+          description: |-
+            You are in the hallway entrance to the castle.
+                                  It is dark and gloomy, and the air of decay and
+                                  desolation is very depressing. You suddenly feel
+                                  very frightened.
+          choices:
+          - Run away
+          - Proceed through South Door
+          has_events: false
+        name: Hallway Entrance
+        parent: *14
+        node_depth: 
+        children_hash:
+          Audience Chamber: &16 !ruby/object:Tree::TreeNode
+            content: !ruby/object:Room
+              name: Audience Chamber
+              description: |-
+                The faded tapestries on the wall only hint at
+                                        the splendor which this room once had. There is
+                                        a window to the west. By craning your neck through
+                                        it to the right you can see the castle entrance.
+              choices:
+              - Leave by north
+              - Trigger
+              - Leave by south or east
+              has_events: true
+            name: Audience Chamber
+            parent: *15
+            node_depth: 
+            children_hash:
+              Audience_Ch_Ev: &27 !ruby/object:Tree::TreeNode
+                content: !ruby/object:Event
+                  description: |-
+                    You must fight the fanatical Fleshgorger,
+                                              which suddenly stumbles into the room.
+                  str_effect: 25
+                  wlth_effect: 0
+                  triggered: false
+                  battle: true
+                  victory_msg: You defeated the Fleshgorger!
+                  failure_msg: You lost strength!
+                name: Audience_Ch_Ev
+                parent: *16
+                node_depth: 
+                children_hash: {}
+                children: []
+              Great Hall: &17 !ruby/object:Tree::TreeNode
+                content: !ruby/object:Room
+                  name: Great Hall
+                  description: |-
+                    There are two doors in the L-shaped room. You notice
+                                            the wood panels around the room are warped and faded.
+                                            As you look around, a mouse scampers across the floor.
+                                            You whirl around at a sudden noise.
+                  choices:
+                  - Leave by north or west
+                  - Trigger
+                  - Look out by the windows
+                  - Move to east
+                  has_events: true
+                name: Great Hall
+                parent: *16
+                node_depth: 
+                children_hash:
+                  Great_Hall_Nothing: &25 !ruby/object:Tree::TreeNode
+                    content: !ruby/object:Event
+                      description: You see to your relief there is nothing there.
+                      str_effect: 0
+                      wlth_effect: 0
+                      triggered: false
+                      battle: false
+                      victory_msg: 
+                      failure_msg: 
+                    name: Great_Hall_Nothing
+                    parent: *17
+                    node_depth: 
+                    children_hash: {}
+                    children: []
+                  Great_Hall_Lookout: &26 !ruby/object:Tree::TreeNode
+                    content: !ruby/object:Event
+                      description: |-
+                        By straining your eyes through the mist which
+                                                      has swirled up while you've been exploring, you can
+                                                      see below you, looking southwards, an ornamental lake.
+                                                      By craning your neck round to the right through the
+                                                      west window you can just see the entrance door to the
+                                                      castle.
+                      str_effect: 0
+                      wlth_effect: 0
+                      triggered: false
+                      battle: false
+                      victory_msg: 
+                      failure_msg: 
+                    name: Great_Hall_Lookout
+                    parent: *17
+                    node_depth: 
+                    children_hash: {}
+                    children: []
+                  Inner Hallway: &18 !ruby/object:Tree::TreeNode
+                    content: !ruby/object:Room
+                      name: Inner Hallway
+                      description: |-
+                        You are in the inner hallway, which contains a door to
+                                            the north one to the west, and a circular stairwell.
+                                            The room is small and unfriendly.
+                      choices:
+                      - Leave by west
+                      - Look down the stairwell
+                      - Look up the stairs
+                      - Leave by north door
+                      - Go up the stairs
+                      - Go down the stairs
+                      has_events: false
+                    name: Inner Hallway
+                    parent: *17
+                    node_depth: 
+                    children_hash:
+                      Inner_Hall_Lookdown: &21 !ruby/object:Tree::TreeNode
+                        content: !ruby/object:Event
+                          description: |-
+                            Looking down the stairwell, you can
+                                                        see a gloomy, unpleasant looking room, the
+                                                        guardroom of the ancient dungeon.
+                          str_effect: 0
+                          wlth_effect: 0
+                          triggered: false
+                          battle: false
+                          victory_msg: 
+                          failure_msg: 
+                        name: Inner_Hall_Lookdown
+                        parent: *18
+                        node_depth: 
+                        children_hash: {}
+                        children: []
+                      Inner_Hall_Lookup: &22 !ruby/object:Tree::TreeNode
+                        content: !ruby/object:Event
+                          description: |-
+                            Looking up the stairwell you can just
+                                                      make out an elaborately decorated hallway.
+                          str_effect: 0
+                          wlth_effect: 0
+                          triggered: false
+                          battle: false
+                          victory_msg: 
+                          failure_msg: 
+                        name: Inner_Hall_Lookup
+                        parent: *18
+                        node_depth: 
+                        children_hash: {}
+                        children: []
+                      Monarch's Room: &19 !ruby/object:Tree::TreeNode
+                        content: !ruby/object:Room
+                          name: Monarch's Meeting Room
+                          description: |-
+                            This is the monarch's private meeting room. The echo
+                                                  of ancient plotting and wrangling hangs heavy in the
+                                                  musty air.
+                          choices:
+                          - Exit through south door
+                          - Trigger
+                          has_events: true
+                        name: Monarch's Room
+                        parent: *18
+                        node_depth: 
+                        children_hash:
+                          Monarch_R_Ev: &20 !ruby/object:Tree::TreeNode
+                            content: !ruby/object:Event
+                              description: |-
+                                You are attacked by a ghastly Gruesomeness,
+                                                        which was hiding behind the drapes.
+                              str_effect: 0
+                              wlth_effect: 100
+                              triggered: false
+                              battle: true
+                              victory_msg: You won and found an emerald!
+                              failure_msg: |-
+                                The Gruesomeness stole
+                                                        from you while you were exhausted.
+                            name: Monarch_R_Ev
+                            parent: *19
+                            node_depth: 
+                            children_hash: {}
+                            children: []
+                        children:
+                        - *20
+                      L-Shaped Upper Hallway: &23 !ruby/object:Tree::TreeNode
+                        content: !ruby/object:Room
+                          name: L-Shapped Upper Hallway
+                          description: |-
+                            You are in the L-shaped upper hallway of the castle.
+                                                  A moth flutters across the room near the ceiling.
+                                                  To the north is a door and there is a stairwell in the
+                                                  hall as well.
+                          choices:
+                          - Go down where you came from
+                          - Peek through the door
+                          - Look down the new stairwell
+                          - Go through the door
+                          has_events: true
+                        name: L-Shaped Upper Hallway
+                        parent: *18
+                        node_depth: 
+                        children_hash: {}
+                        children: []
+                      Prison Guardroom: &24 !ruby/object:Tree::TreeNode
+                        content: !ruby/object:Room
+                          name: |-
+                            You are in the prison guardroom, in the basement
+                                                  of the castle. The stairwell ends in this room. There is
+                                                  one other exit, a small hole in the east wall. The air is
+                                                  damp and unpleasant... a chill wind rushes into the room
+                                                  from gaps in the stone at the top of the walls.
+                          description:
+                          - Go up the stairs
+                          - Go through hole in the east
+                          choices: []
+                          has_events: false
+                        name: Prison Guardroom
+                        parent: *18
+                        node_depth: 
+                        children_hash: {}
+                        children: []
+                    children:
+                    - *21
+                    - *22
+                    - *19
+                    - *23
+                    - *24
+                children:
+                - *25
+                - *26
+                - *18
+            children:
+            - *27
+            - *17
+        children:
+        - *16
+    children:
+    - *15

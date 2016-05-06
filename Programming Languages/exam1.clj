@@ -62,7 +62,7 @@
   [n]
   (if (zero? n)
     '(1)
-    (concat '(1) (prev-line (pascal (dec n))) '(1))))
+    (concat '(1) (prev-line (pascal-other (dec n))) '(1))))
 
 ;==========================================================
 (defn index-in-list-by-predicate

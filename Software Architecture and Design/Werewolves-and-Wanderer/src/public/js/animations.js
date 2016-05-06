@@ -18,3 +18,5 @@ $(function() {
                         height: '550px'},
     1000, 'linear');
 });
+
+$("button[type='submit' class='btn btn-primary disabled']").prop('disabled', true);

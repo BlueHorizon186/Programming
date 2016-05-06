@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class GameTree - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-initialize_rooms_and_events">#initialize_rooms_and_events</a>
+    
+    <li ><a href="#method-i-print_map">#print_map</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-GameTree">
+  <h1 id="class-GameTree" class="class">
+    class GameTree
+  </h1>
+
+  <section class="description">
+    
+<p>The <code>GameTree</code> class represents an object that holds a tree data
+structure via means of the gem <code>RubyTree</code>, in order to store the
+castle map used throughout the game. It links all rooms and events
+according to the original game script to guide the player through the
+adventure.</p>
+
+<p>Each node contains either a <code>Room</code> object or an
+<code>Event</code> object with its respective description. The
+<code>Room</code> objects also contain an array with all the possible
+choices the player can make there. The first index will always refer to the
+parent node, i.e. the previous room.</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-entrance" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">entrance</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>The first room of the castle. In this case, it&#39;s the entrance.</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new <code>GameTree</code> instance.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/models/game_tree.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+  <span class="ruby-ivar">@entrance</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Entrance&#39;</span>,                    <span class="ruby-constant">Room</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Entrance&#39;</span>,                      <span class="ruby-string">&#39;You are at the entrance of a forbidding-looking
+                  stone castle. You are facing east. The huge wooden
+                  entrance door stands lightly open.&#39;</span>,
+                  [<span class="ruby-string">&#39;Enter the Castle&#39;</span>]))
+  <span class="ruby-identifier">initialize_rooms_and_events</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-initialize_rooms_and_events" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initialize_rooms_and_events</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Adds all remaining rooms and events to the entrance node, generating the
+entire game tree.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="initialize_rooms_and_events-source">
+            <pre><span class="ruby-comment"># File src/models/game_tree.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize_rooms_and_events</span>
+  <span class="ruby-identifier">n_hallway_e</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Hallway Entrance&#39;</span>,                      <span class="ruby-constant">Room</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Hallway Entrance&#39;</span>,                        <span class="ruby-string">&#39;You are in the hallway entrance to the castle.
+                    It is dark and gloomy, and the air of decay and
+                    desolation is very depressing. You suddenly feel
+                    very frightened.&#39;</span>,
+                    [<span class="ruby-string">&#39;Run away&#39;</span>, <span class="ruby-string">&#39;Proceed through South Door&#39;</span>]))
+  <span class="ruby-ivar">@entrance</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_hallway_e</span>
+
+  <span class="ruby-identifier">n_audience_ch</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Audience Chamber&#39;</span>,                        <span class="ruby-constant">Room</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Audience Chamber&#39;</span>,                          <span class="ruby-string">&#39;The faded tapestries on the wall only hint at
+                      the splendor which this room once had. There is
+                      a window to the west. By craning your neck through
+                      it to the right you can see the castle entrance.&#39;</span>,
+                      [<span class="ruby-string">&#39;Leave by north&#39;</span>, <span class="ruby-string">&#39;Trigger&#39;</span>, <span class="ruby-string">&#39;Leave by south or east&#39;</span>], <span class="ruby-keyword">true</span>))
+  <span class="ruby-identifier">n_hallway_e</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_audience_ch</span>
+
+  <span class="ruby-identifier">n_audiencech_ev</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Audience_Ch_Ev&#39;</span>,                          <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;You must fight the fanatical Fleshgorger,
+                        which suddenly stumbles into the room.&#39;</span>, <span class="ruby-value">25</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword">true</span>,                            <span class="ruby-string">&#39;You defeated the Fleshgorger!&#39;</span>, <span class="ruby-string">&#39;You lost strength!&#39;</span>))
+  <span class="ruby-identifier">n_audience_ch</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_audiencech_ev</span>
+
+  <span class="ruby-identifier">n_great_hall</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Great Hall&#39;</span>,                        <span class="ruby-constant">Room</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Great Hall&#39;</span>,                          <span class="ruby-string">&#39;There are two doors in the L-shaped room. You notice
+                      the wood panels around the room are warped and faded.
+                      As you look around, a mouse scampers across the floor.
+                      You whirl around at a sudden noise.&#39;</span>,
+                      [<span class="ruby-string">&#39;Leave by north or west&#39;</span>, <span class="ruby-string">&#39;Trigger&#39;</span>, <span class="ruby-string">&#39;Look out by the windows&#39;</span>,                            <span class="ruby-string">&#39;Move to east&#39;</span>], <span class="ruby-keyword">true</span>))
+  <span class="ruby-identifier">n_audience_ch</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_great_hall</span>
+
+  <span class="ruby-identifier">n_greathall_nothing</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Great_Hall_Nothing&#39;</span>,                              <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;You see to your relief there is nothing there.&#39;</span>,                                <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword">false</span>))
+  <span class="ruby-identifier">n_great_hall</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_greathall_nothing</span>
+
+  <span class="ruby-identifier">n_greathall_lookout</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Great_Hall_Lookout&#39;</span>,                              <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;By straining your eyes through the mist which
+                            has swirled up while you\ve been exploring, you can
+                            see below you, looking southwards, an ornamental lake.
+                            By craning your neck round to the right through the
+                            west window you can just see the entrance door to the
+                            castle.&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword">false</span>))
+  <span class="ruby-identifier">n_great_hall</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_greathall_lookout</span>
+
+  <span class="ruby-identifier">n_inner_h</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Inner Hallway&#39;</span>,                    <span class="ruby-constant">Room</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Inner Hallway&#39;</span>,                      <span class="ruby-string">&#39;You are in the inner hallway, which contains a door to
+                  the north one to the west, and a circular stairwell.
+                  The room is small and unfriendly.&#39;</span>,                      [<span class="ruby-string">&#39;Leave by west&#39;</span>, <span class="ruby-string">&#39;Look down the stairwell&#39;</span>,                        <span class="ruby-string">&#39;Look up the stairs&#39;</span>, <span class="ruby-string">&#39;Leave by north door&#39;</span>,                        <span class="ruby-string">&#39;Go up the stairs&#39;</span>, <span class="ruby-string">&#39;Go down the stairs&#39;</span>]))
+  <span class="ruby-identifier">n_great_hall</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_inner_h</span>
+
+  <span class="ruby-identifier">n_innerh_lookdown</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Inner_Hall_Lookdown&#39;</span>,                            <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Looking down the stairwell, you can
+                          see a gloomy, unpleasant looking room, the
+                          guardroom of the ancient dungeon.&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword">false</span>))
+  <span class="ruby-identifier">n_inner_h</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_innerh_lookdown</span>
+
+  <span class="ruby-identifier">n_innerh_lookup</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Inner_Hall_Lookup&#39;</span>,                          <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Looking up the stairwell you can just
+                        make out an elaborately decorated hallway.&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword">false</span>))
+  <span class="ruby-identifier">n_inner_h</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_innerh_lookup</span>
+
+  <span class="ruby-identifier">n_monarch_r</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Monarch\s Room&#39;</span>,                      <span class="ruby-constant">Room</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Monarch\s Meeting Room&#39;</span>,                        <span class="ruby-string">&#39;This is the monarch\s private meeting room. The echo
+                    of ancient plotting and wrangling hangs heavy in the
+                    musty air.&#39;</span>,                        [<span class="ruby-string">&#39;Exit through south door&#39;</span>, <span class="ruby-string">&#39;Trigger&#39;</span>], <span class="ruby-keyword">true</span>))
+  <span class="ruby-identifier">n_inner_h</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_monarch_r</span>
+
+  <span class="ruby-identifier">n_monarchr_ev</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Monarch_R_Ev&#39;</span>,                        <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;You are attacked by a ghastly Gruesomeness,
+                      which was hiding behind the drapes.&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-keyword">true</span>,                          <span class="ruby-string">&#39;You won and found an emerald!&#39;</span>, <span class="ruby-string">&#39;The Gruesomeness stole
+                      from you while you were exhausted.&#39;</span>))
+  <span class="ruby-identifier">n_monarch_r</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_monarchr_ev</span>
+
+  <span class="ruby-identifier">n_lshaped_h</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;L-Shaped Upper Hallway&#39;</span>,                      <span class="ruby-constant">Room</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;L-Shapped Upper Hallway&#39;</span>,                        <span class="ruby-string">&#39;You are in the L-shaped upper hallway of the castle.
+                    A moth flutters across the room near the ceiling.
+                    To the north is a door and there is a stairwell in the
+                    hall as well.&#39;</span>,                        [<span class="ruby-string">&#39;Go down where you came from&#39;</span>, <span class="ruby-string">&#39;Peek through the door&#39;</span>,                          <span class="ruby-string">&#39;Look down the new stairwell&#39;</span>, <span class="ruby-string">&#39;Go through the door&#39;</span>], <span class="ruby-keyword">false</span>))
+  <span class="ruby-identifier">n_inner_h</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_lshaped_h</span>
+
+  <span class="ruby-identifier">n_prison_gr</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Prison Guardroom&#39;</span>,                      <span class="ruby-constant">Room</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Prison Guardroom&#39;</span>, <span class="ruby-string">&#39;You are in the prison guardroom,
+                    in the basement of the castle. The stairwell ends in this room.
+                    There is one other exit, a small hole in the east wall.
+                    The air is damp and unpleasant... a chill wind rushes into
+                    the room from gaps in the stone at the top of the walls.&#39;</span>,                        [<span class="ruby-string">&#39;Go up the stairs&#39;</span>, <span class="ruby-string">&#39;Go through hole in the east&#39;</span>]))
+  <span class="ruby-identifier">n_inner_h</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_prison_gr</span>
+
+  <span class="ruby-comment">#L-Shapped Hallway Pending...</span>
+  <span class="ruby-identifier">n_lshapedh_peek</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;LShaped_Peek&#39;</span>,                          <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Peering into the room you see it was once the
+                        master bedroom. It appears quiet. As you turn back you
+                        notice a small bottle on the ground. Quickly, you uncork
+                        it and swallow the contents. The bottle contained a
+                        wonderful elixir which has increased your strength.&#39;</span>, <span class="ruby-value">30</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword">false</span>))
+  <span class="ruby-identifier">n_lshaped_h</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_lshapedh_peek</span>
+
+  <span class="ruby-identifier">n_lshapedh_lookdown</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;LShaped_Lookdown&#39;</span>,                              <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;To be implemented...&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword">false</span>))
+  <span class="ruby-identifier">n_lshaped_h</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_lshapedh_lookdown</span>
+
+  <span class="ruby-identifier">n_master_bed</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Master Bedroom&#39;</span>,                      <span class="ruby-constant">Room</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Master Bedroom&#39;</span>, <span class="ruby-string">&#39;You find yourself in the
+                    master bedroom on the upper level of the castle.
+                    Looking down from the window to the west you can
+                    see the entrance to the castle, while the secret
+                    herb garden is visible below the north window.
+                    There are doors to the east and to the south.&#39;</span>,                        [<span class="ruby-string">&#39;Leave by south door&#39;</span>, <span class="ruby-string">&#39;Trigger&#39;</span>, <span class="ruby-string">&#39;Leave by east door&#39;</span>], <span class="ruby-keyword">true</span>))
+  <span class="ruby-identifier">n_lshaped_h</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_master_bed</span>
+
+  <span class="ruby-comment"># Master Bedroom Pending...</span>
+  <span class="ruby-identifier">n_masterbed_ev</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Master_Bed_Ev&#39;</span>,                        <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Aha... wealth! You find great treasure here
+                      worth $900 in gems and gold.&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">900</span>, <span class="ruby-keyword">false</span>))
+  <span class="ruby-identifier">n_master_bed</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_masterbed_ev</span>
+
+  <span class="ruby-identifier">n_dungeon</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Dungeon&#39;</span>,                    <span class="ruby-constant">Room</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Dungeon&#39;</span>, <span class="ruby-string">&#39;You are in a dank, dark dungeon.
+                  The only light comes into the room from a small hole
+                  in the west wall.&#39;</span>,                      [<span class="ruby-string">&#39;Leave the dungeon&#39;</span>, <span class="ruby-string">&#39;Trigger&#39;</span>], <span class="ruby-keyword">true</span>))
+  <span class="ruby-identifier">n_prison_gr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_dungeon</span>
+
+  <span class="ruby-identifier">n_dungeon_ev</span> = <span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Dungeon_Ev&#39;</span>,                      <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;The ghost of the guard has awoken!
+                    Your strength is reduced due to the fright you
+                    suffered.&#39;</span>, <span class="ruby-value">-35</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword">false</span>))
+  <span class="ruby-identifier">n_dungeon</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n_dungeon_ev</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_map" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_map</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Calls the <code>RubyTree</code> <strong>print_tree</strong> method to print
+all the nodes so far. Used for debugging purposes only.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="print_map-source">
+            <pre><span class="ruby-comment"># File src/models/game_tree.rb, line 191</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_map</span>
+  <span class="ruby-ivar">@entrance</span>.<span class="ruby-identifier">print_tree</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

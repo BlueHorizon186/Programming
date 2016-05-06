@@ -1,13 +1,17 @@
 # Final Project: A Text Adventure Game
 # Date: 05-May-2016
-# Author: A01371166 Ivan David Diaz Sanchez
+# Authors: A01371166 Ivan David Diaz Sanchez
+#          A01372223 Jonathan Patlan
 
 # File: models/database_manager.rb
 
 require 'singleton'
 require 'sequel'
 
+# The database's location path.
 DB_PATH = './db/adv_game.db'
+
+# The database connection instance.
 DB = Sequel.connect(:adapter=>'sqlite', :database=>DB_PATH)
 
 # The +DatabaseManager+ is an implementation of the {Singleton
@@ -73,10 +77,6 @@ class DatabaseManager
     end
 
     ['Game loaded successfully!', requested_pl]
-  end
-
-  # Implementation pending...
-  def update(*user_data)
   end
 
 end

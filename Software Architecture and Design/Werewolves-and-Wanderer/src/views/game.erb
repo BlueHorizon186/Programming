@@ -57,10 +57,33 @@
 
   <form method="post" action="/gameadv" class="choiceform">
     <ul id="choicebuttons">
+
       <% @next_choices.each_with_index do |ch, i| %>
-        <li><button type="submit" class="btn btn-primary" id="choicebtn"
-              name="btn" value="<%= i %>"><%= ch %></button></li>
+        <% if @unlocked then %>
+          <% if ch == 'Trigger' then %>
+            <li><button type="submit" class="btn btn-primary disabled" id="choicebtn"
+                  name="btn" value="<%= i %>"><%= ch %></button></li>
+
+          <% else %>
+            <li><button type="submit" class="btn btn-primary" id="choicebtn"
+                  name="btn" value="<%= i %>"><%= ch %></button></li>
+          <% end %>
+
+        <% else %>
+          <% if ch == 'Trigger' or ch == 'Return' then %>
+            <li><button type="submit" class="btn btn-primary" id="choicebtn"
+                  name="btn" value="<%= i %>"><%= ch %></button></li>
+
+          <% else %>
+            <li><button type="submit" class="btn btn-primary disabled" id="choicebtn"
+                  name="btn" value="<%= i %>"><%= ch %></button></li>
+
+          <% end %>
+
+        <% end %>
+
       <% end %>
+
     </ul>
   </form>
 </div>

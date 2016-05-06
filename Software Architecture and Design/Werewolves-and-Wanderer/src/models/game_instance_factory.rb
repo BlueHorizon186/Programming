@@ -1,6 +1,7 @@
 # Final Project: A Text Adventure Game
 # Date: 05-May-2016
-# Author: A01371166 Ivan David Diaz Sanchez
+# Authors: A01371166 Ivan David Diaz Sanchez
+#          A01372223 Jonathan Patlan
 
 # File: models/game_instance_factory.rb
 
@@ -8,8 +9,6 @@ require 'yaml'
 require_relative './player'
 require_relative './game_instance'
 require_relative './database_manager'
-
-#YAML_FILES_PATH = "db/yaml"
 
 # The +GameInstanceFactory+ is an implementation of the {Simple
 # Factory Pattern}[https://en.wikipedia.org/wiki/Factory_method_pattern].

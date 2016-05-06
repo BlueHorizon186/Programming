@@ -58,8 +58,12 @@ get '/gameadv' do
   next_state = game_inst.play_next
 
   if next_state.is_a?(Room) then
+    if next_state.has_events then @unlocked = false
+    else @unlocked = true end
+
     @next_st = next_state.name
     @next_choices = next_state.choices
+
   elsif next_state.is_a?(Event)
     @next_st = 'Event'
     @next_choices = ['Return']
@@ -71,6 +75,12 @@ get '/gameadv' do
       else @message = next_state.failure_msg end
     end
 
+    if @victory then
+      player.monster_tally += 1
+    elsif @victory == false
+      player.monster_tally -= 1 unless player.monster_tally < 1
+    end
+
     game_inst.apply_event_effects
   end
 
@@ -79,6 +89,7 @@ get '/gameadv' do
   @wealth = player.wealth
   @monsters = player.monster_tally
   @next_desc = next_state.description
+
   erb :game
 end
 

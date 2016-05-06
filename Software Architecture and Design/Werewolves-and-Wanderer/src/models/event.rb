@@ -1,6 +1,7 @@
 # Final Project: A Text Adventure Game
 # Date: 05-May-2016
-# Author: A01371166 Ivan David Diaz Sanchez
+# Authors: A01371166 Ivan David Diaz Sanchez
+#          A01372223 Jonathan Patlan
 
 # File: models/event.rb
 

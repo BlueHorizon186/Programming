@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class GameInstanceFactory - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-load_game">::load_game</a>
+    
+    <li ><a href="#method-c-new_game">::new_game</a>
+    
+    <li ><a href="#method-c-new_instance">::new_instance</a>
+    
+    <li ><a href="#method-c-refresh_game">::refresh_game</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-GameInstanceFactory">
+  <h1 id="class-GameInstanceFactory" class="class">
+    class GameInstanceFactory
+  </h1>
+
+  <section class="description">
+    
+<p>The <code>GameInstanceFactory</code> is an implementation of the <a
+href="https://en.wikipedia.org/wiki/Factory_method_pattern">Simple Factory
+Pattern</a>. It allows you to create instances of the <a
+href="GameInstance.html">::GameInstance</a> class by accessing the database
+and afterwards, calling the <a
+href="GameInstanceFactory.html#method-c-new_instance">::new_instance</a>
+class method. If it is a preexisting game, then it just searches for the
+appropriate YAML file and returns the object stored in it.</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-load_game" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load_game</span><span
+            class="method-args">(user, password)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reads a previously registered player record from the database and returns
+its id.</p>
+<dl class="rdoc-list note-list"><dt>Parameters
+<dd><dl class="rdoc-list note-list"><dt>user
+<dd>
+<p>The player&#39;s username.</p>
+</dd><dt>password
+<dd>
+<p>The player&#39;s account password.</p>
+</dd></dl>
+</dd><dt>Returns
+<dd>
+<p>The given player&#39;s id.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="load_game-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance_factory.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load_game</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">password</span>)
+  <span class="ruby-identifier">saved_game</span> = <span class="ruby-identifier">@@db</span>.<span class="ruby-identifier">retrieve</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">password</span>)
+
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">saved_game</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">saved_game</span>[<span class="ruby-value">1</span>][<span class="ruby-value">:id</span>]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new_game" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new_game</span><span
+            class="method-args">(user, password)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new fresh game and registers the new player in the database. The
+<code>DatabaseManager</code> is called for this purpose.</p>
+<dl class="rdoc-list note-list"><dt>Parameters
+<dd><dl class="rdoc-list note-list"><dt>user
+<dd>
+<p>The player&#39;s username.</p>
+</dd><dt>password
+<dd>
+<p>The player&#39;s account password.</p>
+</dd></dl>
+</dd><dt>Returns
+<dd>
+<p>The fresh <code>GameInstance</code> object.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="new_game-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance_factory.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">new_game</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">password</span>)
+  <span class="ruby-identifier">new_player_id</span> = <span class="ruby-identifier">@@db</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">password</span>)
+  <span class="ruby-identifier">player</span> = <span class="ruby-constant">Player</span>.<span class="ruby-identifier">new</span>({<span class="ruby-value">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">new_player_id</span>, <span class="ruby-value">:name=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">user</span>, <span class="ruby-value">:strength=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">50</span>,                            <span class="ruby-value">:wealth=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">50</span>, <span class="ruby-value">:monster_tally=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>, <span class="ruby-value">:current_room=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">nil</span>})
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">new_instance</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">new_player_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new_instance" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new_instance</span><span
+            class="method-args">(pl, pl_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates the new <code>GameInstance</code> object. It is called by means of
+any of the previous methods.</p>
+<dl class="rdoc-list note-list"><dt>Parameter
+<dd><dl class="rdoc-list note-list"><dt>pl
+<dd>
+<p>The player&#39;s information</p>
+</dd></dl>
+</dd><dt>Returns
+<dd>
+<p>The <code>GameInstance</code> object.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="new_instance-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance_factory.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">new_instance</span>(<span class="ruby-identifier">pl</span>, <span class="ruby-identifier">pl_id</span>)
+  <span class="ruby-identifier">new_inst</span> = <span class="ruby-constant">GameInstance</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">pl</span>)
+
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{YAML_FILES_PATH}/y_#{pl_id}.yaml&quot;</span>, <span class="ruby-string">&quot;w&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">file</span>.<span class="ruby-identifier">puts</span> <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">dump</span>(<span class="ruby-identifier">new_inst</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">pl_id</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-refresh_game" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">refresh_game</span><span
+            class="method-args">(pl_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Looks for the given player&#39;s YAML file and reads his/her previously
+saved <code>GameInstance</code>.</p>
+<dl class="rdoc-list note-list"><dt>Parameter
+<dd><dl class="rdoc-list note-list"><dt>pl_id
+<dd>
+<p>The player&#39;s id.</p>
+</dd></dl>
+</dd><dt>Returns
+<dd>
+<p>The given player&#39;s <code>GameInstance</code> with his/her progress.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="refresh_game-source">
+            <pre><span class="ruby-comment"># File src/models/game_instance_factory.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">refresh_game</span>(<span class="ruby-identifier">pl_id</span>)
+  <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-node">&quot;#{YAML_FILES_PATH}/y_#{pl_id}.yaml&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

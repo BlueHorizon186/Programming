@@ -1,12 +1,14 @@
 # Final Project: A Text Adventure Game
 # Date: 05-May-2016
-# Author: A01371166 Ivan David Diaz Sanchez
+# Authors: A01371166 Ivan David Diaz Sanchez
+#          A01372223 Jonathan Patlan
 
 # File: models/game_instance.rb
 
 require 'yaml'
 require_relative './game_tree'
 
+# The YAML folder path.
 YAML_FILES_PATH = "db/yaml"
 
 # The +GameInstance+ class represents an object that will
@@ -81,6 +83,10 @@ class GameInstance
     else
       if choice == 0 then @player.curr_room = @player.curr_room.parent
       else @player.curr_room = @player.curr_room[choice - 1]
+      end
+
+      if @player.curr_room.content.is_a?(Event) then
+        @player.curr_room.parent.content.has_events = false
       end
     end
 

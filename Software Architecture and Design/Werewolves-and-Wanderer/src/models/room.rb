@@ -1,6 +1,7 @@
 # Final Project: A Text Adventure Game
 # Date: 05-May-2016
-# Author: A01371166 Ivan David Diaz Sanchez
+# Authors: A01371166 Ivan David Diaz Sanchez
+#          A01372223 Jonathan Patlan
 
 # File: models/room.rb
 
@@ -18,28 +19,24 @@ class Room
   # The possible choices the player can make in this room.
   attr_reader :choices
 
+  # Some rooms in the game trigger events automatically.
+  # This variable stores whether the room contains events or not.
+  attr_accessor :has_events
+
   # Creates a new +Room+ instance with the given description.
   #
   # Parameters::
   #   name:: The room's name.
   #   desc:: The room's description.
   #   choices:: The room's possible choice alternatives.
-  def initialize(name, desc, choices = [])
+  #   event:: The room's automatic event(s) or nil if it
+  #           has none.
+  def initialize(name, desc, choices = [], events = false)
     @name = name
     @description = desc
     @choices = choices
+    @has_events = events
   end
-
-  # Numbers the possible decisions listed in the _choices_
-  # array and builds a list with it. Used in the console
-  # version of the game only.
-  #
-  # Returns:: A string with the choices' numbered list.
-  # def show_choices
-  #   decision_list = "\n"
-  #   @choices.each_with_index {|e, i| decision_list << "#{i+1}. #{e}\n"}
-  #   decision_list
-  # end
 
   # Get a string with all the room's necessary information for
   # the player to be able to take a decision on what he/she
