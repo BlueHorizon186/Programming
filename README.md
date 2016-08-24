@@ -1,2 +1,2 @@
 # Programming
-It will store all programming jobs, both from school and personal.
+It will store all programming jobs during this semester.
